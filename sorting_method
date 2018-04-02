@@ -55,4 +55,38 @@ int selection_sort (int * arr)
 
 ##################################  Heap Sort ##########################################
 
-void  heapify 
+void  heapify (int arr[], int root){
+
+ int biggest_num = root;
+ int left  = 2*arr.size()+1;
+ int right = 2*arr.size()+2;
+ 
+ if(arr[left] >arr[biggest_num])
+     biggest_num =left;
+     
+ if(arr[right] >arr[biggest_num])
+     biggest_num =right;  
+
+ if(biggest_num != root){
+     sawp(arr[root], arr[biggest_num]);
+     heapify (arr, biggest_num);          //if the  biggest_num is not root, call heapify and search again until root is biggest_num 
+ }
+}
+
+void create_heap(int arr[])
+{
+for(int i= arr.size()/2-1; i >=0; i--)        // find a parent node (n/2-1) and send to the heapify function
+ heapify(arr, i);
+
+}
+
+void heap_sort(int arr[])
+{
+create_heap(arr);
+
+for(int i = arr.size()-1; i >= 0; i-- ){     //change maximum value to the leaf and heapify the rest of nodes
+     swap(a[0],a[i]);
+     heapify(arr, 0);
+}
+
+}
