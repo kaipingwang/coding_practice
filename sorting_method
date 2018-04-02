@@ -36,7 +36,7 @@ void quick_sort(int* arr, int font, int end)
   }
 }
 
-##################################  Selection Sort ##########################################
+##################################  Selection Sort ######################################
 
 int selection_sort (int * arr)
 {
@@ -53,7 +53,7 @@ int selection_sort (int * arr)
 
 }
 
-##################################  Heap Sort ##########################################
+##################################  Heap Sort ############################################
 
 void  heapify (int arr[], int root){
 
@@ -69,7 +69,8 @@ void  heapify (int arr[], int root){
 
  if(biggest_num != root){
      sawp(arr[root], arr[biggest_num]);
-     heapify (arr, biggest_num);          //if the  biggest_num is not root, call heapify and search again until root is biggest_num 
+     heapify (arr, biggest_num);              //if the  biggest_num is not root, call heapify and search again until root is 
+                                              //biggest_num 
  }
 }
 
@@ -84,9 +85,30 @@ void heap_sort(int arr[])
 {
 create_heap(arr);
 
-for(int i = arr.size()-1; i >= 0; i-- ){     //change maximum value to the leaf and heapify the rest of nodes
+for(int i = arr.size()-1; i >= 0; i-- ){      //change maximum value to the leaf and heapify the rest of nodes
      swap(a[0],a[i]);
      heapify(arr, 0);
 }
 
 }
+
+##################################  Insertion Sort ######################################
+void insertion_sort (int arr[])
+{
+   int cur, pre, std;
+   for(int i =0; i < arr.size(); i++ ){
+       std = arr[i];                                  //select i as a standard to compare
+       cur = i;
+       pre = cur - 1;
+       
+    while(pre> 0 && arr[pre] > std)
+    {
+        arr[pre+1] = arr[pre] ;
+        prev--;
+    }
+    arr[pre+1] =std;
+
+}
+
+}
+
