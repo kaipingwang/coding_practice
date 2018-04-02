@@ -1,0 +1,58 @@
+##################################  Bubble Sort #######################################
+
+void bubble_sort(vector<int> & arr )
+{
+   for(int i =0; i < arr.size() -1; i++){
+      for(int j =0; j < arr.size() -1 -i; j++)
+       if (arr[j] > arr[j + 1])               // every time compare two numbers. 
+        swap(arr[j], arr[j+1]);
+  }
+}
+
+
+##################################  Quick Sort ##########################################
+
+int partition(int * arr, int font, int end)
+{
+  int pivot =arr[end];                       // select end as a reference to compare
+  int i = font -1;
+  for(int j=font; j < end; j++)
+       if(arr[j] < pivot){                   // if element is smaller than pivot, then switch 
+          i++;
+         swap(arr[i], arr[j]); 
+       }
+      i++;
+      swap(arr[i], arr[end]);                // it needs to change back 
+      return i;
+}
+
+void quick_sort(int* arr, int font, int end)
+{
+  if(font< end){
+   int pivot = partition(arr, font, end);
+   quicksort(arr, font  , pivot-1);
+   quicksort(arr, pivot , end);
+  
+  }
+}
+
+##################################  Selection Sort ##########################################
+
+int selection_sort (int * arr)
+{
+ if(int i =0; i< arr.size(); i++){
+ int min =i ;                             // assume the min is the first element 
+ 
+ for(int j =i+1; j< arr.size(); j++){
+   if(arr[min] > arr[j])
+       min = j;
+ }
+ if(min != i)
+   swap(arr[min], arr[i]);
+}
+
+}
+
+##################################  Heap Sort ##########################################
+
+void  heapify 
