@@ -111,4 +111,36 @@ void insertion_sort (int arr[])
 }
 
 }
+##################################  Merge Sort ######################################
+void merge_sort(int* arr, int start, int end )
+{
+int mid;
+if(end> start){
+   mide =(start+ end)/2;
+   merge_sort(arr, start  , mid);
+   merge_sort(arr, mid + 1, end);
+   merge(arr, start, end  , mid);
+}
+}
+
+
+void merge(arr, start ,end, mid)
+{
+
+int i, k,  j = mid + 1, tmp[100];
+
+while(i<=mid && j<=high){
+  if(arr[i] > arr[j])
+       tmp[k] =a[i]; i++; 
+  else
+       tmp[k] =a[j]; j++; 
+    k++;
+}
+  
+while(i<=mid){ tmp[k] =arr[i]; k++; i++;}
+while(j<=end){ tmp[k] =arr[j]; k++; j++;}
+
+}
+
+
 
