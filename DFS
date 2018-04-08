@@ -1,1 +1,98 @@
+**************************** BFS ******************************
 
+void BFS(){
+
+  queue <int> q;
+  int min_dist = INI_MAX; 
+  
+  for(int i=0; i < 9; i++)
+      visit[i] = fasle; 
+      
+  for(int k=0; k < 9; k++){
+       if(!visit[k])
+       {
+       q.push(k);                                                // select k as a root
+       visit[k] =true; 
+       while(!q.empty()){
+       
+           int i = q.top(); q.pop();
+           for(int j= 0; j< 9; j ++)
+              if(adj[i][j] && !visit[i][j])                     // adj[i][j] means it exists the path
+              {
+               
+                    min_dist =  min(min_dist, adj[i][j]);        //find the minimum distance
+                    total_dist += min_dist ;                                        
+                    q.push(j);
+                    visit[j] =true;                             // has visited before
+            
+              }
+      
+       }      
+       
+       }
+  
+  }
+
+}
+**************************** DFS ******************************
+
+void DFS (int root, bool visit [])
+{
+ for(int i =0; j< 9; j++)
+   if(adj[i][j] && !visit[i][j])           // 沒被拜訪過
+      {
+       visit[i] =true;
+       DFS(j);
+      
+      }
+
+} 
+
+int main(){
+
+    for(int i =0; i < 9; i++)
+         visit[i] =false;
+     
+    for(int j=0; j<9; j++ )
+     DFS(j, visit); 
+
+}
+
+
+**************************** minimum spining tree ******************************
+while(cin>> n >> m ){
+  multimap<int, pair<int, int>> cost;
+    while(m--){
+        int a, b, c;
+        cin>> a >> b >> c;
+        cost.insert(make_pair(c, make_pair(a, b)));
+ }
+ 
+ 
+ vector<int> UF; 
+ 
+ for(int i =0; i<= n; i++)                     //heap initialization 
+        UF[i] =i;
+        
+ for(auto it = cost.begin(); it != cost.end(); it++)
+ {
+      int px = findRoot(it -> second.first,  UF);
+      int py = findRoot(it -> second.second, UF);
+      
+      min_dist = min(min_dist, it-> first);
+      total_dist += min_dist;
+      
+      if(px != py)
+        (px > py ) ? UF[py] =px : UF[px] =py;
+
+ }
+ 
+ }
+
+int findRoot(int i, vector<int> UF){
+    int k = i;
+    while(UF[k]!=k) k = UF[k];
+    return k;
+
+
+}
